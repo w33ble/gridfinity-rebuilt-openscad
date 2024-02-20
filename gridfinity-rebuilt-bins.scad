@@ -62,6 +62,8 @@ c_chamfer = 0.5;
 gridz_define = 0; // [0:gridz is the height of bins in units of 7mm increments - Zack's method,1:gridz is the internal height in millimeters, 2:gridz is the overall external height of the bin in millimeters]
 // overrides internal block height of bin (for solid containers). Leave zero for default height. Units: mm
 height_internal = 0;
+// adjust the internal divider height down this much when in auto mode. Units: mm
+height_internal_adjust = 0.1;
 // snap gridz height to nearest 7mm increment
 enable_zsnap = false;
 
@@ -87,7 +89,7 @@ div_base_y = 0;
 // ===== IMPLEMENTATION ===== //
 
 color("tomato") {
-gridfinityInit(gridx, gridy, height(gridz, gridz_define, style_lip, enable_zsnap), height_internal, sl=style_lip) {
+gridfinityInit(gridx, gridy, height(gridz, gridz_define, style_lip, enable_zsnap), height_internal, sl=style_lip, height_internal_adjust) {
 
     if (divx > 0 && divy > 0) {
 

@@ -119,7 +119,7 @@ module cutCylinders(n_divx=1, n_divy=1, cylinder_diameter=1, cylinder_height=1, 
 // initialize gridfinity
 // sl:  lip style of this bin.
 //      0:Regular lip, 1:Remove lip subtractively, 2:Remove lip and retain height
-module gridfinityInit(gx, gy, h, h0 = 0, l = l_grid, sl = 0) {
+module gridfinityInit(gx, gy, h, h0 = 0, l = l_grid, sl = 0, ha0=0.1) {
     $gxx = gx;
     $gyy = gy;
     $dh = h;
@@ -128,7 +128,7 @@ module gridfinityInit(gx, gy, h, h0 = 0, l = l_grid, sl = 0) {
     color("tomato") {
     difference() {
         color("firebrick")
-        block_bottom(h0==0?$dh-0.1:h0, gx, gy, l);
+        block_bottom(h0==0 ? $dh-ha0 : h0, gx, gy, l);
         children();
     }
     color("royalblue")
