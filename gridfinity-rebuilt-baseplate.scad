@@ -47,7 +47,13 @@ fity = 0; // [-1:0.1:1]
 /* [Styles] */
 
 // baseplate styles
-style_plate = 0; // [0: thin, 1:weighted, 2:skeletonized, 3: screw together, 4: screw together minimal]
+style_plate = 0; // [0: thin, 1:solid, 2:skeletonized, 3: screw together, 4: screw together minimal]
+
+// custom height of solid baseplate
+solid_bottom_height = 6.4; // bp_h_bot
+
+// include weight cutouts in solid baseplate
+include_weights = true;
 
 // enable magnet hole
 enable_magnet = true;
@@ -93,7 +99,7 @@ module gridfinityBaseplate(gridx, gridy, length, dix, diy, sp, sm, sh, fitx, fit
         pattern_linear(gx, gy, length) {
             render(convexity = 6) {
 
-                if (sp == 1)
+                if (sp == 1 && include_weights)
                     translate([0,0,-off])
                     cutter_weight();
                 else if (sp == 2 || sp == 3)
